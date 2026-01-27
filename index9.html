@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ECLECTICA 2K26 | Frequency Domain</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+*{ margin:0; padding:0; box-sizing:border-box; }
+
+body{
+  background:#010203;
+  font-family:'Orbitron',sans-serif;
+  color:#cfcfcf;
+  overflow: hidden;
+}
+
+/* ---------- 1. REACTIVE SIGNAL BACKGROUND ---------- */
+#signal-canvas {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+/* ---------- NAVBAR (Fixed as requested) ---------- */
+.navbar{
+  position:fixed; top:0; width:100%; padding:16px 40px;
+  display:flex; justify-content:space-between; align-items:center;
+  background:rgba(0,0,0,0.85); backdrop-filter:blur(12px); z-index:1000;
+  border-bottom: 1px solid rgba(0, 255, 156, 0.15);
+}
+.nav-logo{ font-size:20px; letter-spacing:2px; color:#00ff9c; }
+.nav-links{ display:flex; gap:28px; }
+.nav-links a{ text-decoration:none; color:#8fffd2; font-size:13px; }
+
+/* ---------- HERO ---------- */
+.hero{
+  position: relative;
+  height:100vh;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  overflow:hidden; text-align:center;
+}
+
+/* ---------- 2. SATELLITE (Vector Tracking) ---------- */
+.satellite-path {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 2; pointer-events: none;
+}
+.satellite-container {
+  position: absolute; width: 200px;
+  animation: intercept-orbit 45s linear infinite;
+}
+.satellite-container img { 
+    width: 100%; 
+    filter: drop-shadow(0 0 25px #00ff9c) hue-rotate(10deg); 
+}
+
+@keyframes intercept-orbit {
+  0% { left: -20%; top: 60%; transform: scale(0.3) rotate(-45deg); opacity: 0; }
+  10% { opacity: 1; }
+  50% { left: 45%; top: 10%; transform: scale(1.4) rotate(0deg); }
+  90% { opacity: 1; }
+  100% { left: 120%; top: 60%; transform: scale(0.3) rotate(45deg); opacity: 0; }
+}
+
+/* ---------- 3. THE "DRAWN" PCB LOGO ---------- */
+svg.hero-svg{ width:92%; max-width:1400px; z-index: 10; position: relative; }
+
+.pcb-text{
+  fill:none; stroke:#00ff9c; stroke-width:1.5; font-size:105px;
+  letter-spacing:15px; filter:drop-shadow(0 0 20px #00ff9c);
+  stroke-dasharray: 2000; stroke-dashoffset: 2000;
+  animation: draw-main 6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes draw-main { to { stroke-dashoffset: 0; } }
+
+.dept-text{ 
+  fill:#00cfff; font-size:20px; letter-spacing:10px; font-weight: 300;
+  text-shadow: 0 0 10px rgba(0, 207, 255, 0.5);
+}
+
+/* ---------- 4. DATA PACKET BUTTONS ---------- */
+.hero-buttons{ margin-top:60px; display:flex; gap:40px; z-index: 20; }
+
+.btn {
+  padding: 12px 35px;
+  background: transparent;
+  color: #00ff9c;
+  border-left: 4px solid #00ff9c;
+  border-right: 4px solid #00ff9c;
+  border-top: none; border-bottom: none;
+  font-family: 'Orbitron';
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.btn:hover {
+  background: rgba(0, 255, 156, 0.1);
+  letter-spacing: 5px;
+  box-shadow: inset 0 0 15px rgba(0, 255, 156, 0.2);
+}
+
+/* ---------- 5. SIGNAL JUNCTIONS (MICRO-VIAS) ---------- */
+.via {
+  fill: #00ff9c;
+  animation: pulse-via 2s infinite;
+}
+@keyframes pulse-via {
+  0%, 100% { r: 2; opacity: 1; }
+  50% { r: 5; opacity: 0.3; }
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="signal-canvas"></canvas>
+
+<nav class="navbar">
+  <div class="nav-logo">ECLECTICA 2K26</div>
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="#">Events</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="satellite-path">
+    <div class="satellite-container">
+      <img src="satilite.png" alt="Satellite">
+    </div>
+  </div>
+
+  <svg class="hero-svg" viewBox="0 0 1400 400">
+    <defs><path id="textCurve" d="M150 220 Q700 80 1250 220" /></defs>
+    
+    <text class="pcb-text">
+        <textPath href="#textCurve" startOffset="0%">ECLECTICA 2K26</textPath>
+    </text>
+    
+    <text x="700" y="295" text-anchor="middle" class="dept-text">COMMUNICATION SYSTEMS & VLSI</text>
+    
+    <path stroke="rgba(0, 255, 156, 0.3)" fill="none" d="M0 250 H1400 M0 265 H1400" />
+    <circle class="via" cx="300" cy="250" r="3" />
+    <circle class="via" cx="1100" cy="250" r="3" />
+    <circle class="via" cx="700" cy="265" r="3" />
+  </svg>
+
+  <div class="hero-buttons">
+    <button class="btn">SIGNAL FLOW</button>
+    <button class="btn">SYSTEM SYNC</button>
+  </div>
+</section>
+
+<script>
+  /* --- REACTIVE WAVEGUIDE SCRIPT --- */
+  const canvas = document.getElementById('signal-canvas');
+  const ctx = canvas.getContext('2d');
+  let time = 0;
+  let mouseX = 0;
+
+  function init() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function drawWave() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.beginPath();
+    ctx.strokeStyle = '#00ff9c';
+    ctx.lineWidth = 1;
+
+    // Amplitude increases based on mouse position
+    const amp = 30 + (mouseX / 50);
+
+    for (let i = 0; i < canvas.width; i++) {
+      // Harmonic Sine Wave Equation: y = A * sin(B * (x + C))
+      const y = canvas.height / 2 + 
+                Math.sin(i * 0.01 + time) * amp + 
+                Math.sin(i * 0.02 + time * 1.5) * 10;
+      
+      if (i === 0) ctx.moveTo(i, y);
+      else ctx.lineTo(i, y);
+    }
+    
+    ctx.stroke();
+    time += 0.05;
+    requestAnimationFrame(drawWave);
+  }
+
+  window.addEventListener('mousemove', (e) => mouseX = e.clientX);
+  window.addEventListener('resize', init);
+  init();
+  drawWave();
+</script>
+
+</body>
+</html>
