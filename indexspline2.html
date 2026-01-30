@@ -1,43 +1,400 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta 
-        name="viewport" 
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    >
-    <title>Spline Responsive</title>
+<meta charset="UTF-8">
+<meta 
+  name="viewport" 
+  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+>
+<title>Eclectica – Spline Loader</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-        html, body {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
+html,body{
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  background:#000;
+  font-family:Arial, sans-serif;
+}
 
-        iframe {
-            position: fixed;
-            inset: 0; /* replaces top, left, right, bottom */
-            width: 100vw;
-            height: 100vh;
-            border: none;
-        }
-    </style>
+/* ---------- LOADER ---------- */
+.loader{
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle at center, #000c08 0%, #000 70%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:24px;
+  z-index:9999;
+  transition:opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.loader.hide{
+  opacity:0;
+  visibility:hidden;
+}
+
+.loader img{
+  width:200px;
+  height:200px;
+  animation:pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse{
+  0%,100%{ transform:scale(1); opacity:0.8; }
+  50%{ transform:scale(1.05); opacity:1; }
+}
+
+.loading-bar{
+  width:180px;
+  height:4px;
+  background:rgba(255,255,255,0.15);
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.loading-bar span{
+  display:block;
+  width:40%;
+  height:100%;
+  background:linear-gradient(90deg, #00ff9c, #00bcd4);
+  animation:loading 1.5s ease-in-out infinite;
+}
+
+@keyframes loading{
+  0%{ transform:translateX(-100%); }
+  100%{ transform:translateX(250%); }
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  padding:18px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:400;
+}
+
+.nav-logo{
+  font-size:20px;
+  font-weight:600;
+  letter-spacing:2px;
+  color:#00ff9c;
+}
+
+.nav-links{
+  list-style:none;
+  display:flex;
+  gap:35px;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:#e0e0e0;
+  font-size:16px;
+  letter-spacing:2px;
+}
+
+/* ---------- HAMBURGER ---------- */
+.hamburger{
+  display:none;
+  width:28px;
+  height:22px;
+  position:relative;
+  cursor:pointer;
+  z-index:500;
+}
+
+.hamburger span{
+  position:absolute;
+  width:100%;
+  height:3px;
+  background:#00ff9c;
+  left:0;
+  transition:0.35s ease;
+}
+
+.hamburger span:nth-child(1){ top:0; }
+.hamburger span:nth-child(2){ top:9px; }
+.hamburger span:nth-child(3){ top:18px; }
+
+.hamburger.active span:nth-child(1){
+  transform:rotate(45deg);
+  top:9px;
+}
+.hamburger.active span:nth-child(2){
+  opacity:0;
+}
+.hamburger.active span:nth-child(3){
+  transform:rotate(-45deg);
+  top:9px;
+}
+
+/* ---------- IFRAME ---------- */
+iframe{
+  position:absolute;
+  inset:0;
+  width:100vw;
+  height:100vh;
+  border:none;
+}
+
+/* ---------- DESKTOP OVERLAY ---------- */
+.overlay-desktop{
+  position:absolute;
+  inset:0;
+  z-index:150;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  align-items:center;
+  padding-left:80px;
+  pointer-events:none;
+  
+}
+
+.overlay-desktop h1{
+  font-size:64px;
+  letter-spacing:4px;
+  color:#00ff9c;
+  margin-bottom:20px;
+}
+
+.overlay-desktop p{
+  max-width:900px;
+  font-size:24px;
+  color:#d0d0d0;
+  margin-bottom:30px;
+  line-height:1.6;
+  text-align: center;
+ 
+}
+
+.desktop-buttons{
+  display:flex;
+  gap:20px;
+  margin-bottom: 40px;
+}
+
+.desktop-buttons a{
+  pointer-events:auto;
+  padding:14px 36px;
+  border-radius:40px;
+  text-decoration:none;
+  font-size:15px;
+  letter-spacing:1px;
+}
+
+.desktop-primary{
+  background:#00ff9c;
+  color:#000;
+}
+
+.desktop-secondary{
+  border:1px solid #00ff9c;
+  color:#00ff9c;
+}
+
+/* ---------- MOBILE OVERLAY ---------- */
+.mobile-overlay{
+  position:absolute;
+  inset:0;
+  z-index:150;
+  display:none;
+  flex-direction:column;
+  justify-content:flex-end;
+  align-items:center;
+  padding:30px 20px 60px;
+  background:linear-gradient(
+    to top,
+    rgba(0,0,0,0.85),
+    rgba(0,0,0,0.35),
+    transparent
+  );
+}
+
+.mobile-overlay h1{
+  color:#ffffff;
+  font-size:28px;
+  letter-spacing:2px;
+  margin-bottom:6px;
+}
+
+.mobile-overlay h3{
+  color:#f0f332;
+  font-weight:normal;
+  margin-bottom:12px;
+}
+
+.mobile-overlay p{
+  color:#e0e0e0;
+  font-size:16px;
+  text-align:center;
+  line-height:1.5;
+  margin-bottom:20px;
+  max-width:90%;
+  margin-top: 200px;
+}
+
+.overlay-buttons{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  width:90%;
+}
+
+.overlay-buttons a{
+  text-align:center;
+  padding:12px;
+  border-radius:30px;
+  text-decoration:none;
+  font-size:14px;
+  letter-spacing:1px;
+}
+
+.btn-primary{
+  background:#00ff9c;
+  color:#000;
+}
+
+.btn-secondary{
+  border:1px solid #00ff9c;
+  color:#00ff9c;
+}
+
+/* ---------- RESPONSIVE ---------- */
+.mob{ display:none; }
+
+@media(max-width:768px){
+  .lap{ display:none; }
+  .mob{ display:block; }
+
+  .hamburger{ display:block; }
+
+  .nav-links{
+    position:fixed;
+    top:0;
+    right:0;
+    height:100vh;
+    width:50%;
+    background:rgba(0,0,0,0.9);
+    flex-direction:column;
+    padding-top:100px;
+    padding-left:50px;
+    gap:30px;
+    transform:translateX(100%);
+    transition:0.4s ease;
+    z-index:300;
+  }
+
+  .nav-links.active{
+    transform:translateX(0);
+  }
+
+  .overlay-desktop{
+    display:none;
+  }
+
+  .mobile-overlay{
+    display:flex;
+  }
+}
+</style>
 </head>
 
 <body>
-    <iframe 
-        src="https://my.spline.design/thebluemarble-FfMPRmQhu3kiQDCLA2njTBJB/"
-        allowfullscreen
-        loading="lazy">
-    </iframe>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <img src="Eclectica-logo-nobg.png" alt="Loading Logo">
+  <div class="loading-bar"><span></span></div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-logo">ECLECTICA</div>
+
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- MOBILE OVERLAY -->
+<div class="mobile-overlay">
+  <h1>ECLECTICA 2K26</h1>
+  <h3>( March 13 )</h3>
+  <p>
+    Department of Electronics & Communication Engineering presents a futuristic
+    technical fest.
+  </p>
+
+  <div class="overlay-buttons">
+    <a href="#events" class="btn-primary">Explore Events</a>
+    <a href="#register" class="btn-secondary">Register</a>
+  </div>
+</div>
+
+<!-- DESKTOP OVERLAY -->
+<div class="overlay-desktop">
+  <p>
+    Department of Electronics & Communication Engineering presents a futuristic
+    technical symposium with innovation, design, and competition.
+  </p>
+
+  <div class="desktop-buttons">
+    <a href="#events" class="desktop-primary">Explore Events</a>
+    <a href="#register" class="desktop-secondary">Register Now</a>
+  </div>
+</div>
+
+<!-- DESKTOP SPLINE -->
+<iframe
+  class="lap"
+  src="https://my.spline.design/thebluemarble-FfMPRmQhu3kiQDCLA2njTBJB/"
+  onload="hideLoader()">
+</iframe>
+
+<!-- MOBILE SPLINE -->
+<iframe
+  class="mob"
+  src="https://my.spline.design/thebluemarble-u2UaH9PVc41X7o9LtANW9JEg/"
+  onload="hideLoader()">
+</iframe>
+
+<script>
+function hideLoader(){
+  document.getElementById("loader").classList.add("hide");
+}
+
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("navLinks");
+
+hamburger.addEventListener("click", () => {
+  hamburger.classList.toggle("active");
+  navLinks.classList.toggle("active");
+});
+</script>
+
 </body>
 </html>
-
-
