@@ -23,6 +23,40 @@ html,body{
   font-family:Arial, sans-serif;
 }
 
+/* ---------- FLOATING SATELLITE ---------- */
+.satellite-static {
+  position: absolute;
+  top: 130px;      /* Placed below the navbar */
+  left: 40px;     /* Aligned with the logo */
+  z-index: 200;
+  pointer-events: none;
+  animation: float 4s ease-in-out infinite;
+}
+
+.satellite-static img {
+  width: 200px;   /* Desktop size */
+  height: 150px;
+  filter: drop-shadow(0 0 15px rgba(0, 255, 156, 0.3));
+  transform: rotate(15deg); /* Artistic tilt */
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+/* Responsive adjustments for the satellite */
+@media(max-width:768px){
+  .satellite-static {
+    top: 90px;   /* Moves down further to avoid hamburger menu */
+    left: 30px;
+  }
+  .satellite-static img {
+    width: 100px;
+    height: 80px;
+  }
+}
+
 /* ---------- LOADER ---------- */
 .loader{
   position:fixed;
@@ -162,14 +196,6 @@ iframe{
   align-items:center;
   padding-left:80px;
   pointer-events:none;
-  
-}
-
-.overlay-desktop h1{
-  font-size:64px;
-  letter-spacing:4px;
-  color:#00ff9c;
-  margin-bottom:20px;
 }
 
 .overlay-desktop p{
@@ -179,7 +205,6 @@ iframe{
   margin-bottom:30px;
   line-height:1.6;
   text-align: center;
- 
 }
 
 .desktop-buttons{
@@ -316,13 +341,15 @@ iframe{
 
 <body>
 
-<!-- LOADER -->
 <div class="loader" id="loader">
   <img src="Eclectica-logo-nobg.png" alt="Loading Logo">
   <div class="loading-bar"><span></span></div>
 </div>
 
-<!-- NAVBAR -->
+<div class="satellite-static">
+  <img src="satilite.png" alt="Satellite">
+</div>
+
 <nav class="navbar">
   <div class="nav-logo">ECLECTICA</div>
 
@@ -340,7 +367,6 @@ iframe{
   </ul>
 </nav>
 
-<!-- MOBILE OVERLAY -->
 <div class="mobile-overlay">
   <h1>ECLECTICA 2K26</h1>
   <h3>( March 13 )</h3>
@@ -355,7 +381,6 @@ iframe{
   </div>
 </div>
 
-<!-- DESKTOP OVERLAY -->
 <div class="overlay-desktop">
   <p>
     Department of Electronics & Communication Engineering presents a futuristic
@@ -368,14 +393,12 @@ iframe{
   </div>
 </div>
 
-<!-- DESKTOP SPLINE -->
 <iframe
   class="lap"
   src="https://my.spline.design/thebluemarble-FfMPRmQhu3kiQDCLA2njTBJB/"
   onload="hideLoader()">
 </iframe>
 
-<!-- MOBILE SPLINE -->
 <iframe
   class="mob"
   src="https://my.spline.design/thebluemarble-u2UaH9PVc41X7o9LtANW9JEg/"
