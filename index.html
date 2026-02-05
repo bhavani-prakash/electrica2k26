@@ -1,264 +1,936 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>ECLECTICA 2K26</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECLECTICA 2k26 - Department Fest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Playfair+Display:wght@700;900&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+        body {
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            background: #0a1628;
+            color: #ffffff;
+        }
+         .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: transparent;
+            padding: 10px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          
+            transition: all 0.3s ease;
+        }
 
-<style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+        .navbar.scrolled {
+            padding: 15px 50px;
+            background: rgba(10, 22, 40, 0.98);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
 
-body{
-  background:#050505;
-  font-family:'Orbitron',sans-serif;
-  color:#00ff9c;
-}
+        .nav-logo {
+            font-size: 1.8rem;
+            font-family: 'Cinzel', serif;
+            font-weight: 900;
+            background: linear-gradient(45deg, #d4af37, #f4d03f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            letter-spacing: 0.05em;
+        }
 
-/* ---------- NAVBAR ---------- */
-.navbar{
-  position:fixed;
-  top:0;
-  width:100%;
-  padding:16px 40px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:rgba(0,0,0,0.6);
-  backdrop-filter:blur(10px);
-  z-index:1000;
-}
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            align-items: center;
+        }
 
-.nav-logo{
-  font-size:20px;
-  letter-spacing:2px;
-}
+        .nav-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
 
-.nav-links{
-  display:flex;
-  gap:28px;
-}
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #d4af37;
+            transition: width 0.3s ease;
+        }
 
-.nav-links a{
-  text-decoration:none;
-  color:#00ff9c;
-  font-size:14px;
-  transition:0.3s;
-}
+        .nav-link:hover {
+            color: #d4af37;
+        }
 
-.nav-links a:hover{
-  text-shadow:0 0 8px #00ff9c;
-}
+        .nav-link:hover::after {
+            width: 100%;
+        }
 
-/* MOBILE MENU */
-.menu-toggle{
-  display:none;
-}
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
 
-.menu-icon{
-  display:none;
-  font-size:24px;
-  cursor:pointer;
-}
+        .nav-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #d4af37;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
 
-/* ---------- HERO ---------- */
-.hero{
-  height:100vh;
-  background:radial-gradient(circle at center, #0a3d2e 0%, #020202 60%);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-  padding-top:80px;
-  text-align:center;
-}
+        .nav-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
 
-svg{
-  width:95%;
-  max-width:1400px;
-}
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
 
-/* PCB TEXT */
-.pcb-text{
-  fill:none;
-  stroke:#00ff9c;
-  stroke-width:3;
-  font-size:96px;
-  letter-spacing:10px;
-  filter:drop-shadow(0 0 8px #00ff9c);
-}
+        .nav-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+        nav img {
+            width: 4rem;
+            height:4rem;
+            border-radius: 50%;
+        }
 
-/* DEPARTMENT TEXT */
-.dept-text{
-  fill:#00ff9c;
-  font-size:26px;
-  letter-spacing:3px;
-  opacity:0.85;
-  filter:drop-shadow(0 0 6px #00ff9c);
-}
 
-/* TAGLINE */
-.tagline{
-  margin-top:20px;
-  max-width:800px;
-  font-size:16px;
-  opacity:0.85;
-}
+        /* HERO SECTION */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            background: linear-gradient(135deg, #0a1628 0%, #1a2f4f 50%, #0a1628 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
 
-/* BUTTONS */
-.hero-buttons{
-  margin-top:30px;
-  display:flex;
-  gap:20px;
-}
+        .particle {
+            position: absolute;
+            background: rgba(212, 175, 55, 0.3);
+            border-radius: 50%;
+            animation: float 6s infinite ease-in-out;
+        }
 
-.btn{
-  padding:14px 28px;
-  border:2px solid #00ff9c;
-  background:transparent;
-  color:#00ff9c;
-  font-family:'Orbitron',sans-serif;
-  font-size:14px;
-  cursor:pointer;
-  transition:0.3s;
-}
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+            50% { transform: translateY(-30px) translateX(20px); opacity: 0.6; }
+        }
 
-.btn:hover{
-  background:#00ff9c;
-  color:#020202;
-  box-shadow:0 0 20px #00ff9c;
-}
+        .eagle-container {
+            position: absolute;
+            top: -300px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: eagleSwoopDown 3.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            z-index: 10;
+            perspective: 1000px;
+        }
 
-.btn.primary{
-  background:#00ff9c;
-  color:#020202;
-}
+        @keyframes eagleSwoopDown {
+            0% {
+                top: -300px;
+                transform: translateX(-50%) scale(0.3) rotateX(60deg) rotateZ(-10deg);
+                opacity: 0;
+            }
+            30% {
+                top: 5%;
+                transform: translateX(-50%) scale(1.3) rotateX(20deg) rotateZ(5deg);
+                opacity: 1;
+            }
+            60% {
+                top: 18%;
+                transform: translateX(-50%) scale(0.9) rotateX(-10deg) rotateZ(-3deg);
+            }
+            100% {
+                top: -25%;
+                transform: translateX(-50%) scale(1) rotateX(0deg) rotateZ(0deg);
+                opacity: 1;
+            }
+        }
 
-/* TRACE */
-.trace{
-  stroke:#00ff9c;
-  stroke-width:2;
-  fill:none;
-  stroke-dasharray:6 10;
-  animation:flow 3s linear infinite;
-  opacity:0.8;
-}
+        .eagle {
+            width: 800px;
+            height: auto;
+            filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.8));
+            animation: eagleFloat 3s ease-in-out infinite 3.5s;
+        }
 
-.comp{
-  fill:#00ff9c;
-  filter:drop-shadow(0 0 6px #00ff9c);
-}
+        @keyframes eagleFloat {
+            0%, 100% {
+                transform: translateY(0) rotateZ(0deg);
+            }
+            50% {
+                transform: translateY(-15px) rotateZ(0deg);
+            }
+        }
 
-@keyframes flow{
-  to{ stroke-dashoffset:-200; }
-}
+        .content {
+            text-align: center;
+            z-index: 15;
+            animation: fadeInUp 1s ease-out 1.5s forwards;
+            opacity: 0;
+        }
 
-/* ---------- RESPONSIVE ---------- */
-@media(max-width:768px){
-  .pcb-text{
-    font-size:48px;
-    letter-spacing:4px;
-  }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-  .dept-text{
-    font-size:14px;
-    letter-spacing:1px;
-  }
+        .fest-name {
+            font-size: 5rem;
+            font-weight: 900;
+            font-family: 'Cinzel', serif;
+            background: linear-gradient(180deg, #f4d03f 0%, #d4af37 50%, #c9a959 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 0.08em;
+            margin-top: 190px;
+            animation: glow 2s ease-in-out infinite alternate;
+            line-height: 1;
+           
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6));
+            position: relative;
+            text-transform: uppercase;
+        }
 
-  .nav-links{
-    position:absolute;
-    top:70px;
-    right:40px;
-    background:#020202;
-    flex-direction:column;
-    padding:20px;
-    display:none;
-  }
+        .fest-name .big-letter {
+            font-size: 1.35em;
+            display: inline-block;
+            vertical-align: baseline;
+            line-height: 0.85;
+        }
 
-  .menu-toggle:checked + .menu-icon + .nav-links{
-    display:flex;
-  }
+        
 
-  .menu-icon{
-    display:block;
-  }
+        @keyframes glow {
+            from {
+                filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.5));
+            }
+            to {
+                filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.8));
+            }
+        }
 
-  .hero-buttons{
-    flex-direction:column;
-  }
-}
-</style>
+        .year {
+            font-size: 3rem;
+            color: #fffefd;
+            font-weight: 700;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 0.3em;
+            margin-top: 0px;
+            position: relative;
+            display: inline-block;
+            padding: 0 60px;
+        }
+
+        .year::before,
+        .year::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 50px;
+            height: 2px;
+            background: #d4af37;
+        }
+
+        .year::before {
+            left: 0;
+        }
+
+        .year::after {
+            right: 0;
+        }
+
+        /* COUNTDOWN TIMER */
+        .countdown-container {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .countdown-box {
+            background: rgba(212, 175, 55, 0.1);
+            border: 2px solid #d4af37;
+            border-radius: 10px;
+            padding: 16px 22px;
+            min-width: 120px;
+        }
+
+        .countdown-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #d4af37;
+            display: block;
+        }
+
+        .countdown-label {
+            font-size: 0.9rem;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 5px;
+        }
+
+        .tagline {
+            color: #d4af37;
+            font-size: 1.3rem;
+            margin-top: 20px;
+            letter-spacing: 0.2em;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            margin-top: 20px;
+            padding: 16px 50px;
+            font-size: 1.1rem;
+            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+            color: #0a1628;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.5);
+        }
+
+        /* GALLERY SECTION */
+        .gallery-section {
+            padding: 100px 50px;
+            background: #0f1f35;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3.5rem;
+            font-family: 'Playfair Display', serif;
+            color: #d4af37;
+            margin-bottom: 60px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            perspective: 1000px;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.6s ease;
+            transform-style: preserve-3d;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-20px) rotateY(5deg) rotateX(5deg) scale(1.05);
+            box-shadow: 0 25px 50px rgba(212, 175, 55, 0.4);
+        }
+
+        .gallery-item:nth-child(odd):hover {
+            transform: translateY(-20px) rotateY(-5deg) rotateX(5deg) scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a2f4f, #0a1628);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d4af37;
+            font-size: 1.2rem;
+            transition: all 0.6s ease;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .gallery-item:hover .gallery-placeholder {
+            background: linear-gradient(135deg, #1a2f4f, #2a4f7f);
+            border-color: #d4af37;
+        }
+
+        /* EVENTS SECTION */
+        .events-section {
+            padding: 100px 50px;
+            background: #0a1628;
+        }
+
+        .events-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .event-card {
+            background: linear-gradient(135deg, #1a2f4f 0%, #0f1f35 100%);
+            border: 2px solid #d4af37;
+            border-radius: 20px;
+            padding: 50px 40px;
+            text-align: center;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            transition: transform 0.6s ease;
+            pointer-events: none;
+        }
+
+        .event-card:hover::before {
+            transform: scale(1.5);
+        }
+
+        .event-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.4);
+            border-color: #f4d03f;
+        }
+
+        .event-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .event-title {
+            font-size: 2rem;
+            font-family: 'Playfair Display', serif;
+            color: #d4af37;
+            margin-bottom: 15px;
+        }
+
+        .event-description {
+            font-size: 1rem;
+            color: #ffffff;
+            opacity: 0.8;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .event-button {
+            padding: 15px 40px;
+            background: transparent;
+            border: 2px solid #d4af37;
+            color: #d4af37;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .event-button:hover {
+            background: #d4af37;
+            color: #0a1628;
+        }
+
+        /* ABOUT US SECTION */
+        .about-section {
+            padding: 100px 50px;
+            background: #0f1f35;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-text {
+            font-size: 1.2rem;
+            line-height: 2;
+            color: #ffffff;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        /* CONTACT SECTION */
+        .contact-section {
+            padding: 100px 50px;
+            background: #0a1628;
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 30px;
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid #d4af37;
+            border-radius: 15px;
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            color: #d4af37;
+            margin-bottom: 15px;
+        }
+
+        .contact-title {
+            font-size: 1.3rem;
+            color: #d4af37;
+            margin-bottom: 10px;
+        }
+
+        .contact-detail {
+            font-size: 1rem;
+            color: #ffffff;
+            opacity: 0.8;
+        }
+
+        /* FOOTER */
+        .footer {
+            padding: 40px 50px;
+            background: #050d18;
+            text-align: center;
+            border-top: 1px solid #d4af37;
+        }
+
+        .footer-text {
+            color: #ffffff;
+            opacity: 0.7;
+            font-size: 1rem;
+        }
+
+        .social-links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.1);
+            border: 2px solid #d4af37;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d4af37;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: #d4af37;
+            color: #0a1628;
+            transform: translateY(-5px);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .fest-name {
+                font-size: 6rem;
+            }
+            .year {
+                font-size: 2.5rem;
+                padding: 0 50px;
+            }
+            .countdown-box {
+                padding: 15px 25px;
+                min-width: 80px;
+            }
+            .countdown-number {
+                font-size: 2.5rem;
+            }
+            .eagle {
+                width: 600px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .fest-name {
+                font-size: 4rem;
+            }
+            .fest-name .big-letter {
+                font-size: 1.3em;
+            }
+            .year {
+                font-size: 2rem;
+                padding: 0 40px;
+            }
+            .year::before,
+            .year::after {
+                width: 30px;
+            }
+            .tagline {
+                font-size: 1rem;
+            }
+            .eagle {
+                width: 400px;
+            }
+            .countdown-container {
+                gap: 10px;
+            }
+            .countdown-box {
+                padding: 12px 15px;
+                min-width: 65px;
+            }
+            .countdown-number {
+                font-size: 1.8rem;
+            }
+            .countdown-label {
+                font-size: 0.7rem;
+            }
+            .section-title {
+                font-size: 2.5rem;
+            }
+            .events-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .event-card {
+                padding: 40px 30px;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .gallery-section,
+            .events-section,
+            .about-section,
+            .contact-section {
+                padding: 60px 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .fest-name {
+                font-size: 3rem;
+            }
+            .year {
+                font-size: 1.5rem;
+                padding: 0 30px;
+            }
+            .year::before,
+            .year::after {
+                width: 20px;
+            }
+            .eagle {
+                width: 300px;
+            }
+            .countdown-container {
+                gap: 8px;
+            }
+            .countdown-box {
+                padding: 10px 12px;
+                min-width: 55px;
+            }
+            .countdown-number {
+                font-size: 1.5rem;
+            }
+            .countdown-label {
+                font-size: 0.6rem;
+            }
+            .cta-button {
+                padding: 15px 35px;
+                font-size: 1rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .event-icon {
+                font-size: 3rem;
+            }
+            .event-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
+        <!-- NAVBAR -->
+    <nav class="navbar">
+        <div style="display: flex;justify-content: center;align-items: center;gap: 10px;">
+        <img src="images/image.png" alt="ECLECTICA Logo" /> 
+        <img src="images/Eclectica-logo-nobg.png" alt="ECE" />
+        <a href="eagle3.html" class="nav-logo">ECLECTICA</a></div>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#gallery" class="nav-link">Gallery</a></li>
+            <li><a href="#events" class="nav-link">Events</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="nav-toggle" id="navToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
 
-<!-- NAVBAR -->
-<!-- <nav class="navbar">
-  <div class="nav-logo">ECLECTICA 2K26</div>
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+        <!-- Background particles -->
+        <div class="particle" style="width: 10px; height: 10px; top: 20%; left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="width: 15px; height: 15px; top: 40%; left: 80%; animation-delay: 1s;"></div>
+        <div class="particle" style="width: 8px; height: 8px; top: 60%; left: 15%; animation-delay: 2s;"></div>
+        <div class="particle" style="width: 12px; height: 12px; top: 80%; left: 70%; animation-delay: 1.5s;"></div>
+        <div class="particle" style="width: 10px; height: 10px; top: 30%; left: 60%; animation-delay: 0.5s;"></div>
 
-  <input type="checkbox" id="menu" class="menu-toggle">
-  <label for="menu" class="menu-icon">☰</label>
+        <!-- Eagle -->
+        <div class="eagle-container">
+            <img src="images/final2.png" alt="Flying Eagle" class="eagle" style="mix-blend-mode: lighten;">
+        </div>
 
-  <div class="nav-links">
-    <a href="#">Home</a>
-    <a href="#">Events</a>
-    <a href="#">About</a>
-    <a href="#">Contact</a>
-  </div>
-</nav> -->
+        <!-- Content -->
+        <div class="content">
+            <h1 class="fest-name">
+                <span class="big-letter">E</span>CLECTIC<span class="big-letter">A</span>
+            </h1>
+            <h1 style="margin-top: 20px;font-size: 90px;">COMING SOON...!</h1>
+            <!-- <div class="year">2k26</div>
+            <p style="margin-top: 30px;"> MARCH 13</p> -->
+            
+            <!-- Countdown Timer -->
+            <!-- <div class="countdown-container">
+                <div class="countdown-box">
+                    <span class="countdown-number" id="days">00</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-box">
+                    <span class="countdown-number" id="hours">00</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-box">
+                    <span class="countdown-number" id="minutes">00</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-box">
+                    <span class="countdown-number" id="seconds">00</span>
+                    <span class="countdown-label">Seconds</span>
+                </div>
+            </div> -->
 
-<!-- HERO -->
-<section class="hero">
+            <!-- <p class="tagline">CELEBRATE • CREATE • INSPIRE</p>
+            <button class="cta-button">Explore Events</button> -->
+        </div>
+    </section>
 
-<svg viewBox="0 0 1400 400">
-  <defs>
-    <path id="textCurve" d="M50 220 Q700 80 1350 220" />
-  </defs>
+    <!-- GALLERY SECTION -->
+    <!-- <section class="gallery-section" id="gallery">
+        <h2 class="section-title">Gallery</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <div class="gallery-placeholder">Event Moments 1</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-placeholder">Event Moments 2</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-placeholder">Event Moments 3</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-placeholder">Event Moments 4</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-placeholder">Event Moments 5</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-placeholder">Event Moments 6</div>
+            </div>
+        </div>
+    </section> -->
 
-  <!-- MAIN TITLE -->
-  <text class="pcb-text">
-    <textPath href="#textCurve" startOffset="10%">
-      ECLECTICA 2K26
-    </textPath>
-  </text>
+    <!-- EVENTS SECTION -->
+    <!-- <section class="events-section" id="events">
+        <h2 class="section-title">Events</h2>
+        <div class="events-container"> -->
+            <!-- Technical Events Card -->
+            <!-- <div class="event-card">
+                <div class="event-icon">💻</div>
+                <h3 class="event-title">Technical Events</h3>
+                <p class="event-description">
+                    Dive into cutting-edge technology competitions, coding challenges, hackathons, and innovation showcases.
+                </p>
+                <a href="tech.html" class="event-button">Explore Tech Events</a>
+            </div> -->
 
-  <!-- DEPARTMENT NAME -->
-  <text x="700" y="280" text-anchor="middle" class="dept-text">
-    Department of Electronics and Communication Engineering
-  </text>
+            <!-- Non-Technical Events Card -->
+            <!-- <div class="event-card">
+                <div class="event-icon">🎭</div>
+                <h3 class="event-title">Non-Technical Events</h3>
+                <p class="event-description">
+                    Experience cultural performances, creative competitions, gaming tournaments, and entertainment activities.
+                </p>
+                <a href="non-tech.html" class="event-button">Explore Non-Tech Events</a>
+            </div>
+        </div>
+    </section> -->
 
-  <!-- PCB TRACES -->
-  <path class="trace" d="M80 230 H350" />
-  <path class="trace" d="M360 230 V180 H520" />
-  <path class="trace" d="M540 180 V230 H720" />
-  <path class="trace" d="M740 230 V160 H950" />
-  <path class="trace" d="M980 160 V230 H1200" />
+    <!-- ABOUT US SECTION -->
+    <!-- <section class="about-section" id="about">
+        <h2 class="section-title">About Us</h2>
+        <div class="about-content">
+            <p class="about-text">
+                ECLECTICA 2k26 is the flagship annual department fest that brings together brilliant minds, creative talents, and innovative thinkers. Our fest is a celebration of diversity, technical prowess, and cultural excellence.
+            </p>
+            <p class="about-text">
+                With a legacy of spectacular events spanning technical competitions, cultural performances, workshops, and networking opportunities, ECLECTICA has become the most anticipated fest of the year. Join us for three days of innovation, inspiration, and unforgettable experiences.
+            </p>
+            <p class="about-text">
+                Whether you're a tech enthusiast, an artist, or simply someone who loves to explore new horizons, ECLECTICA 2k26 has something special for everyone.
+            </p>
+        </div>
+    </section> -->
 
-  <!-- COMPONENTS -->
-  <rect class="comp" x="260" y="222" width="50" height="12" rx="2"/>
-  <rect class="comp" x="620" y="222" width="50" height="12" rx="2"/>
+    <!-- CONTACT SECTION -->
+    <!-- <section class="contact-section" id="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-content">
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <h3 class="contact-title">Email</h3>
+                    <p class="contact-detail"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ff9a9c939a9c8b969c9ecd94cdc9bf9c9093939a989ad19a9b8a">[email&#160;protected]</a></p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <h3 class="contact-title">Phone</h3>
+                    <p class="contact-detail">+91 98765 43210</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <h3 class="contact-title">Location</h3>
+                    <p class="contact-detail">College Campus<br>City, State</p>
+                </div>
+            </div>
+        </div>
+    </section> -->
 
-  <rect class="comp" x="500" y="195" width="6" height="30"/>
-  <rect class="comp" x="515" y="195" width="6" height="30"/>
+    <!-- FOOTER -->
+    <!-- <footer class="footer">
+        <p class="footer-text">© 2026 ECLECTICA. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#" class="social-link">📘</a>
+            <a href="#" class="social-link">📷</a>
+            <a href="#" class="social-link">🐦</a>
+            <a href="#" class="social-link">💼</a>
+        </div>
+    </footer> -->
 
-  <rect class="comp" x="820" y="180" width="80" height="50" rx="4"/>
-  <rect class="comp" x="820" y="170" width="6" height="10"/>
-  <rect class="comp" x="894" y="170" width="6" height="10"/>
-  <rect class="comp" x="820" y="232" width="6" height="10"/>
-  <rect class="comp" x="894" y="232" width="6" height="10"/>
+    <!-- COUNTDOWN TIMER SCRIPT -->
+    <!-- <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script>
+    // Set the target date: March 13, 2026
+    const targetDate = new Date('March 13, 2026 00:00:00').getTime();
 
-  <polygon class="comp" points="1080,215 1100,225 1080,235"/>
-  <rect class="comp" x="1100" y="222" width="22" height="12"/>
-</svg>
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
 
-<h1 style="font-size: 100px;">COMING SOON...</h1>
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor(
+            (distance % (1000 * 60 * 60)) / (1000 * 60)
+        );
+        const seconds = Math.floor(
+            (distance % (1000 * 60)) / 1000
+        );
 
-</section>
+        document.getElementById('days').textContent = String(days).padStart(2, '0');
+        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+
+        // If countdown is finished
+        if (distance < 0) {
+            clearInterval(countdownInterval);
+            document.getElementById('days').textContent = '00';
+            document.getElementById('hours').textContent = '00';
+            document.getElementById('minutes').textContent = '00';
+            document.getElementById('seconds').textContent = '00';
+        }
+    }
+
+    // Run immediately once
+    updateCountdown();
+
+    // Update every second
+    const countdownInterval = setInterval(updateCountdown, 1000);
+</script> -->
 </body>
 </html>
