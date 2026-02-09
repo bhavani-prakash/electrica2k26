@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ECLECTICA 2k26 - Department Fest</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Playfair+Display:wght@700;900&family=Montserrat:wght@300;400;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Playfair+Display:wght@700;900&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -23,8 +20,7 @@
             background: #0a1628;
             color: #ffffff;
         }
-
-        .navbar {
+         .navbar {
             position: fixed;
             top: 0;
             left: 0;
@@ -35,7 +31,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-
+          
             transition: all 0.3s ease;
         }
 
@@ -118,10 +114,9 @@
         .nav-toggle.active span:nth-child(3) {
             transform: rotate(-45deg) translate(7px, -7px);
         }
-
         nav img {
             width: 4rem;
-            height: 4rem;
+            height:4rem;
             border-radius: 50%;
         }
 
@@ -145,17 +140,8 @@
         }
 
         @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0) translateX(0);
-                opacity: 0.3;
-            }
-
-            50% {
-                transform: translateY(-30px) translateX(20px);
-                opacity: 0.6;
-            }
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+            50% { transform: translateY(-30px) translateX(20px); opacity: 0.6; }
         }
 
         .eagle-container {
@@ -174,18 +160,15 @@
                 transform: translateX(-50%) scale(0.3) rotateX(60deg) rotateZ(-10deg);
                 opacity: 0;
             }
-
             30% {
                 top: 5%;
                 transform: translateX(-50%) scale(1.3) rotateX(20deg) rotateZ(5deg);
                 opacity: 1;
             }
-
             60% {
                 top: 18%;
                 transform: translateX(-50%) scale(0.9) rotateX(-10deg) rotateZ(-3deg);
             }
-
             100% {
                 top: -25%;
                 transform: translateX(-50%) scale(1) rotateX(0deg) rotateZ(0deg);
@@ -201,12 +184,9 @@
         }
 
         @keyframes eagleFloat {
-
-            0%,
-            100% {
+            0%, 100% {
                 transform: translateY(0) rotateZ(0deg);
             }
-
             50% {
                 transform: translateY(-15px) rotateZ(0deg);
             }
@@ -224,7 +204,6 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -243,7 +222,7 @@
             margin-top: 190px;
             animation: glow 2s ease-in-out infinite alternate;
             line-height: 1;
-
+           
             filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6));
             position: relative;
             text-transform: uppercase;
@@ -256,13 +235,12 @@
             line-height: 0.85;
         }
 
-
+        
 
         @keyframes glow {
             from {
                 filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.5));
             }
-
             to {
                 filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.8));
             }
@@ -616,70 +594,22 @@
             transform: translateY(-5px);
         }
 
-
-        /* MOBILE NAVBAR */
-        @media (max-width: 768px) {
-            .navbar {
-                padding: 10px 20px;
-            }
-
-            .nav-logo {
-                display: none;
-            }
-
-            .nav-menu {
-                position: fixed;
-                top: 70px;
-                right: -100%;
-                width: 50%;
-                height: calc(100vh - 70px);
-                background: rgba(10, 22, 40, 0.98);
-                flex-direction: column;
-                justify-content: flex-start;
-                gap: 0px;
-                transition: right 0.4s ease;
-            }
-
-            .nav-menu li {
-                margin-top: 30px;
-            }
-
-            .nav-menu.active {
-                right: 0;
-            }
-
-            .nav-toggle {
-                display: flex;
-            }
-
-            nav img {
-                width: 3rem;
-                height: 3rem;
-            }
-        }
-
-
-
         /* RESPONSIVE */
         @media (max-width: 1024px) {
             .fest-name {
                 font-size: 6rem;
             }
-
             .year {
                 font-size: 2.5rem;
                 padding: 0 50px;
             }
-
             .countdown-box {
                 padding: 15px 25px;
                 min-width: 80px;
             }
-
             .countdown-number {
                 font-size: 2.5rem;
             }
-
             .eagle {
                 width: 600px;
             }
@@ -689,73 +619,54 @@
             .fest-name {
                 font-size: 4rem;
             }
-
             .fest-name .big-letter {
                 font-size: 1.3em;
             }
-
             .year {
                 font-size: 2rem;
                 padding: 0 40px;
             }
-
             .year::before,
             .year::after {
                 width: 30px;
             }
-
             .tagline {
                 font-size: 1rem;
             }
-
-            .eagle-container {
-                top: -200px;
-            }
-
             .eagle {
                 width: 400px;
             }
-
             .countdown-container {
                 gap: 10px;
             }
-
             .countdown-box {
                 padding: 12px 15px;
                 min-width: 65px;
             }
-
             .countdown-number {
                 font-size: 1.8rem;
             }
-
             .countdown-label {
                 font-size: 0.7rem;
             }
-
             .section-title {
                 font-size: 2.5rem;
             }
-
             .events-container {
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
-
             .event-card {
                 padding: 40px 30px;
             }
-
             .contact-grid {
                 grid-template-columns: 1fr;
                 gap: 25px;
             }
-
             .gallery-grid {
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
-
             .gallery-section,
             .events-section,
             .about-section,
@@ -768,113 +679,53 @@
             .fest-name {
                 font-size: 3rem;
             }
-
             .year {
                 font-size: 1.5rem;
                 padding: 0 30px;
             }
-
             .year::before,
             .year::after {
                 width: 20px;
             }
-
             .eagle {
-                width: 400px;
+                width: 300px;
             }
-
             .countdown-container {
                 gap: 8px;
             }
-
             .countdown-box {
                 padding: 10px 12px;
                 min-width: 55px;
             }
-
             .countdown-number {
                 font-size: 1.5rem;
             }
-
             .countdown-label {
                 font-size: 0.6rem;
             }
-
             .cta-button {
                 padding: 15px 35px;
                 font-size: 1rem;
             }
-
             .section-title {
                 font-size: 2rem;
             }
-
             .event-icon {
                 font-size: 3rem;
             }
-
             .event-title {
                 font-size: 1.5rem;
             }
         }
-
-        @media (max-width: 480px) {
-
-            .fest-name{
-                margin-top: 130px;
-                font-size: 2.5rem;
-            }
-            .tagline{
-                font-size: 0.9rem;
-                margin-top: 50px;
-            }
-            .cta-button{
-                margin-top: 30px;
-            }
-            .countdown-container {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .eagle-container{
-                animation: eagleSwoopDownMobile 3.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-            }
-            @keyframes eagleSwoopDownMobile {
-                0% {
-                    top: -200px;
-                    transform: translateX(-50%) scale(0.3) rotateX(60deg) rotateZ(-10deg);
-                    opacity: 0;
-                }
-
-                30% {
-                    top: 10%;
-                    transform: translateX(-50%) scale(1.3) rotateX(20deg) rotateZ(5deg);
-                    opacity: 1;
-                }
-
-                60% {
-                    top: 25%;
-                    transform: translateX(-50%) scale(0.9) rotateX(-10deg) rotateZ(-3deg);
-                }
-
-                100% {
-                    top: 5%;
-                    transform: translateX(-50%) scale(1) rotateX(0deg) rotateZ(0deg);
-                    opacity: 1;
-                }
-            }
-
-        }
     </style>
 </head>
-
 <body>
-    <!-- NAVBAR -->
+        <!-- NAVBAR -->
     <nav class="navbar">
         <div style="display: flex;justify-content: center;align-items: center;gap: 10px;">
-            <img src="images/image.png" alt="ECLECTICA Logo" />
-            <img src="images/Eclectica-logo-nobg.png" alt="ECE" />
-            <a href="eagle3.html" class="nav-logo">ECLECTICA</a>
-        </div>
+        <img src="images/image.png" alt="ECLECTICA Logo" /> 
+        <img src="images/Eclectica-logo-nobg.png" alt="ECE" />
+        <a href="eagle3.html" class="nav-logo">ECLECTICA</a></div>
         <ul class="nav-menu" id="navMenu">
             <li><a href="#home" class="nav-link">Home</a></li>
             <li><a href="#gallery" class="nav-link">Gallery</a></li>
@@ -908,11 +759,12 @@
             <h1 class="fest-name">
                 <span class="big-letter">E</span>CLECTIC<span class="big-letter">A</span>
             </h1>
-            <div class="year">2k26</div>
-            <p style="margin-top: 30px;"> MARCH 13</p>
-
+            <h1 style="margin-top: 20px;font-size: 90px;">COMING SOON...!</h1>
+            <!-- <div class="year">2k26</div>
+            <p style="margin-top: 30px;"> MARCH 13</p> -->
+            
             <!-- Countdown Timer -->
-            <div class="countdown-container">
+            <!-- <div class="countdown-container">
                 <div class="countdown-box">
                     <span class="countdown-number" id="days">00</span>
                     <span class="countdown-label">Days</span>
@@ -929,15 +781,15 @@
                     <span class="countdown-number" id="seconds">00</span>
                     <span class="countdown-label">Seconds</span>
                 </div>
-            </div>
+            </div> -->
 
-            <p class="tagline">CELEBRATE • CREATE • INSPIRE</p>
-            <button class="cta-button">Explore Events</button>
+            <!-- <p class="tagline">CELEBRATE • CREATE • INSPIRE</p>
+            <button class="cta-button">Explore Events</button> -->
         </div>
     </section>
 
     <!-- GALLERY SECTION -->
-    <section class="gallery-section" id="gallery">
+    <!-- <section class="gallery-section" id="gallery">
         <h2 class="section-title">Gallery</h2>
         <div class="gallery-grid">
             <div class="gallery-item">
@@ -959,68 +811,59 @@
                 <div class="gallery-placeholder">Event Moments 6</div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- EVENTS SECTION -->
-    <section class="events-section" id="events">
+    <!-- <section class="events-section" id="events">
         <h2 class="section-title">Events</h2>
-        <div class="events-container">
+        <div class="events-container"> -->
             <!-- Technical Events Card -->
-            <div class="event-card">
+            <!-- <div class="event-card">
                 <div class="event-icon">💻</div>
                 <h3 class="event-title">Technical Events</h3>
                 <p class="event-description">
-                    Dive into cutting-edge technology competitions, coding challenges, hackathons, and innovation
-                    showcases.
+                    Dive into cutting-edge technology competitions, coding challenges, hackathons, and innovation showcases.
                 </p>
                 <a href="tech.html" class="event-button">Explore Tech Events</a>
-            </div>
+            </div> -->
 
             <!-- Non-Technical Events Card -->
-            <div class="event-card">
+            <!-- <div class="event-card">
                 <div class="event-icon">🎭</div>
                 <h3 class="event-title">Non-Technical Events</h3>
                 <p class="event-description">
-                    Experience cultural performances, creative competitions, gaming tournaments, and entertainment
-                    activities.
+                    Experience cultural performances, creative competitions, gaming tournaments, and entertainment activities.
                 </p>
                 <a href="non-tech.html" class="event-button">Explore Non-Tech Events</a>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- ABOUT US SECTION -->
-    <section class="about-section" id="about">
+    <!-- <section class="about-section" id="about">
         <h2 class="section-title">About Us</h2>
         <div class="about-content">
             <p class="about-text">
-                ECLECTICA 2k26 is the flagship annual department fest that brings together brilliant minds, creative
-                talents, and innovative thinkers. Our fest is a celebration of diversity, technical prowess, and
-                cultural excellence.
+                ECLECTICA 2k26 is the flagship annual department fest that brings together brilliant minds, creative talents, and innovative thinkers. Our fest is a celebration of diversity, technical prowess, and cultural excellence.
             </p>
             <p class="about-text">
-                With a legacy of spectacular events spanning technical competitions, cultural performances, workshops,
-                and networking opportunities, ECLECTICA has become the most anticipated fest of the year. Join us for
-                three days of innovation, inspiration, and unforgettable experiences.
+                With a legacy of spectacular events spanning technical competitions, cultural performances, workshops, and networking opportunities, ECLECTICA has become the most anticipated fest of the year. Join us for three days of innovation, inspiration, and unforgettable experiences.
             </p>
             <p class="about-text">
-                Whether you're a tech enthusiast, an artist, or simply someone who loves to explore new horizons,
-                ECLECTICA 2k26 has something special for everyone.
+                Whether you're a tech enthusiast, an artist, or simply someone who loves to explore new horizons, ECLECTICA 2k26 has something special for everyone.
             </p>
         </div>
-    </section>
+    </section> -->
 
     <!-- CONTACT SECTION -->
-    <section class="contact-section" id="contact">
+    <!-- <section class="contact-section" id="contact">
         <h2 class="section-title">Contact Us</h2>
         <div class="contact-content">
             <div class="contact-grid">
                 <div class="contact-item">
                     <div class="contact-icon">📧</div>
                     <h3 class="contact-title">Email</h3>
-                    <p class="contact-detail"><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                            data-cfemail="ff9a9c939a9c8b969c9ecd94cdc9bf9c9093939a989ad19a9b8a">[email&#160;protected]</a>
-                    </p>
+                    <p class="contact-detail"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ff9a9c939a9c8b969c9ecd94cdc9bf9c9093939a989ad19a9b8a">[email&#160;protected]</a></p>
                 </div>
                 <div class="contact-item">
                     <div class="contact-icon">📱</div>
@@ -1034,10 +877,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- FOOTER -->
-    <footer class="footer">
+    <!-- <footer class="footer">
         <p class="footer-text">© 2026 ECLECTICA. All rights reserved.</p>
         <div class="social-links">
             <a href="#" class="social-link">📘</a>
@@ -1045,68 +888,49 @@
             <a href="#" class="social-link">🐦</a>
             <a href="#" class="social-link">💼</a>
         </div>
-    </footer>
+    </footer> -->
 
     <!-- COUNTDOWN TIMER SCRIPT -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <!-- <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
-        // Set the target date: March 13, 2026
-        const targetDate = new Date('March 13, 2026 00:00:00').getTime();
+    // Set the target date: March 13, 2026
+    const targetDate = new Date('March 13, 2026 00:00:00').getTime();
 
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = targetDate - now;
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor(
-                (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-            );
-            const minutes = Math.floor(
-                (distance % (1000 * 60 * 60)) / (1000 * 60)
-            );
-            const seconds = Math.floor(
-                (distance % (1000 * 60)) / 1000
-            );
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor(
+            (distance % (1000 * 60 * 60)) / (1000 * 60)
+        );
+        const seconds = Math.floor(
+            (distance % (1000 * 60)) / 1000
+        );
 
-            document.getElementById('days').textContent = String(days).padStart(2, '0');
-            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        document.getElementById('days').textContent = String(days).padStart(2, '0');
+        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
 
-            // If countdown is finished
-            if (distance < 0) {
-                clearInterval(countdownInterval);
-                document.getElementById('days').textContent = '00';
-                document.getElementById('hours').textContent = '00';
-                document.getElementById('minutes').textContent = '00';
-                document.getElementById('seconds').textContent = '00';
-            }
+        // If countdown is finished
+        if (distance < 0) {
+            clearInterval(countdownInterval);
+            document.getElementById('days').textContent = '00';
+            document.getElementById('hours').textContent = '00';
+            document.getElementById('minutes').textContent = '00';
+            document.getElementById('seconds').textContent = '00';
         }
+    }
 
-        // Run immediately once
-        updateCountdown();
+    // Run immediately once
+    updateCountdown();
 
-        // Update every second
-        const countdownInterval = setInterval(updateCountdown, 1000);
-    </script>
-    <script>
-        const navToggle = document.getElementById("navToggle");
-        const navMenu = document.getElementById("navMenu");
-
-        navToggle.addEventListener("click", () => {
-            navToggle.classList.toggle("active");
-            navMenu.classList.toggle("active");
-        });
-
-        // Close menu when clicking a link
-        document.querySelectorAll(".nav-link").forEach(link => {
-            link.addEventListener("click", () => {
-                navMenu.classList.remove("active");
-                navToggle.classList.remove("active");
-            });
-        });
-    </script>
-
+    // Update every second
+    const countdownInterval = setInterval(updateCountdown, 1000);
+</script> -->
 </body>
-
 </html>
