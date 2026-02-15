@@ -10,6 +10,11 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Playfair+Display:wght@700;900&family=Montserrat:wght@300;400;600;700&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+<link rel="manifest" href="images/site.webmanifest">
     <style>
         * {
             margin: 0;
@@ -575,46 +580,141 @@
         }
 
         /* FOOTER */
-        .footer {
-            padding: 40px 50px;
-            background: #050d18;
-            text-align: center;
-            border-top: 1px solid #d4af37;
-        }
-
-        .footer-text {
+        .fest-footer {
+            background: #0f172a;
             color: #ffffff;
-            opacity: 0.7;
-            font-size: 1rem;
+            padding-top: 50px;
+            font-family: 'Poppins', sans-serif;
         }
 
-        .social-links {
-            margin-top: 20px;
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            padding: 0 8%;
+        }
+
+        .footer-div {
             display: flex;
-            justify-content: center;
+            flex-direction: row;
             gap: 20px;
+            justify-content: space-around;
         }
 
-        .social-link {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(212, 175, 55, 0.1);
-            border: 2px solid #d4af37;
+        /* About */
+        .footer-about h2 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #d5f838;
+        }
+
+        .footer-about p {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .committee-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #38bdf8, #6366f1);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 14px;
+            transition: 0.3s ease;
+        }
+
+        .committee-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Links */
+        .footer-links h3,
+        .footer-follow h3,
+        .footer-map h3 {
+            margin-bottom: 15px;
+            color: #d5f838;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links ul li a {
+            text-decoration: none;
+            color: #ddd;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .footer-links ul li a:hover {
+            color: #38bdf8;
+            padding-left: 5px;
+        }
+
+        /* Social Icons */
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #d4af37;
-            font-size: 1.5rem;
+            background: #1e293b;
+            color: #ffffff;
+            border-radius: 50%;
             text-decoration: none;
-            transition: all 0.3s ease;
+            font-size: 18px;
+            transition: 0.3s ease;
         }
 
-        .social-link:hover {
-            background: #d4af37;
-            color: #0a1628;
+        .social-icons a:hover {
+            background: linear-gradient(45deg, #38bdf8, #6366f1);
             transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
+
+        /* Map */
+        .footer-map iframe {
+            border-radius: 12px;
+        }
+
+        /* Bottom */
+        .footer-bottom {
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 40px;
+            background: #020617;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .footer-container {
+                text-align: center;
+            }
+
+            .social-icons {
+                justify-content: center;
+                flex-direction: column;
+            }
+            
+        }
+
+
+
 
 
         /* MOBILE NAVBAR */
@@ -820,24 +920,29 @@
 
         @media (max-width: 480px) {
 
-            .fest-name{
+            .fest-name {
                 margin-top: 130px;
                 font-size: 2.5rem;
             }
-            .tagline{
+
+            .tagline {
                 font-size: 0.9rem;
                 margin-top: 50px;
             }
-            .cta-button{
+
+            .cta-button {
                 margin-top: 30px;
             }
+
             .countdown-container {
                 flex-wrap: wrap;
                 justify-content: center;
             }
-            .eagle-container{
+
+            .eagle-container {
                 animation: eagleSwoopDownMobile 3.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
             }
+
             @keyframes eagleSwoopDownMobile {
                 0% {
                     top: -200px;
@@ -909,7 +1014,7 @@
                 <span class="big-letter">E</span>CLECTIC<span class="big-letter">A</span>
             </h1>
             <div class="year">2k26</div>
-            <p style="margin-top: 30px;"> MARCH 13</p>
+            <p style="margin-top: 25px;font-size: 30px;"> MARCH 13</p>
 
             <!-- Countdown Timer -->
             <div class="countdown-container">
@@ -940,11 +1045,7 @@
     <section class="gallery-section" id="gallery">
         <h2 class="section-title">Gallery</h2>
         <div class="gallery-grid">
-            <div class="gallery-item">
-                <div class="gallery-placeholder">
-                    <img src="images/IMG_1929.jpg" alt="">
-                </div>
-            </div>
+
             <div class="gallery-item">
                 <div class="gallery-placeholder">
                     <img src="images/IMG_1896.jpg" alt="">
@@ -952,17 +1053,23 @@
             </div>
             <div class="gallery-item">
                 <div class="gallery-placeholder">
+                    <img src="images/IMG_1929.jpg" alt="">
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-placeholder">
                     <img src="images/IMG_1753.jpg" alt="">
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <div class="gallery-placeholder">
+                    <img src="images/IMG_1805.jpg" alt="">
                 </div>
             </div>
             <div class="gallery-item">
                 <div class="gallery-placeholder">
                     <img src="images/IMG_1775.jpg" alt="">
-                </div>
-            </div>
-            <div class="gallery-item">
-                <div class="gallery-placeholder">
-                    <img src="images/IMG_1805.jpg" alt="">
                 </div>
             </div>
             <div class="gallery-item">
@@ -1006,14 +1113,13 @@
         <h2 class="section-title">About Us</h2>
         <div class="about-content">
             <p class="about-text">
-                ECLECTICA 2k26 is the flagship annual department fest that brings together brilliant minds, creative
-                talents, and innovative thinkers. Our fest is a celebration of diversity, technical prowess, and
-                cultural excellence.
+                ECLECTICA 2k26 is the flagship  department fest that brings together brilliant minds, creative
+                talents, and innovative thinkers. Our fest is a celebration of diversity, technical prowess.
             </p>
             <p class="about-text">
                 With a legacy of spectacular events spanning technical competitions, cultural performances, workshops,
                 and networking opportunities, ECLECTICA has become the most anticipated fest of the year. Join us for
-                three days of innovation, inspiration, and unforgettable experiences.
+                one day of innovation, inspiration, and unforgettable experiences.
             </p>
             <p class="about-text">
                 Whether you're a tech enthusiast, an artist, or simply someone who loves to explore new horizons,
@@ -1039,25 +1145,63 @@
                     <h3 class="contact-title">Phone</h3>
                     <p class="contact-detail">+91 8125035960</p>
                 </div>
-                <div class="contact-item">
-                    <div class="contact-icon">📍</div>
-                    <h3 class="contact-title">Location</h3>
-                    <p class="contact-detail">College Campus<br>MITS, Lakshmi block</p>
-                </div>
+
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="footer">
-        <p class="footer-text">© 2026 ECLECTICA. All rights reserved.</p>
-        <div class="social-links">
-            <a href="#" class="social-link">📘</a>
-            <a href="#" class="social-link">📷</a>
-            <a href="#" class="social-link">🐦</a>
-            <a href="#" class="social-link">💼</a>
+    <footer class="fest-footer">
+        <div class="footer-container">
+
+            <!-- About Section -->
+            <div class="footer-about">
+                <h2>ECE Department Fest 2026</h2>
+                <p>
+                    Join us for innovation, creativity, and technical excellence.
+                    Experience workshops, competitions, and exciting technical events.
+                </p>
+                <a href="committee.html" class="committee-btn">Meet the Committee</a>
+            </div>
+
+            <div class="footer-div">
+                <!-- Quick Links -->
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/events">Events</a></li>
+                        <li><a href="/register">Register</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Follow Us -->
+                <div class="footer-follow">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+
+                        <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Map Section -->
+            <div class="footer-map">
+                <h3>Our Location</h3>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6391.753530288878!2d78.477809!3d13.629646!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb2677c83886ad7%3A0xad73159e2bddda33!2sMadanapalle%20institute%20of%20technology%20and%20Sciences!5e1!3m2!1sen!2sin!4v1771146519075!5m2!1sen!2sin" width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+        </div>
+
+        <!-- Bottom -->
+        <div class="footer-bottom">
+           <p></p> © 2026 ECE Department Fest | Made with ❤️ by <strong>Bhavani Prakash</strong> </p>
+           
         </div>
     </footer>
+
 
     <!-- COUNTDOWN TIMER SCRIPT -->
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>

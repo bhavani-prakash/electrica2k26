@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Committee | ECE Fest</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    background:#0B1C2D; /* Navy Blue */
+    color:white;
+}
+
+/* Main Heading */
+h1{
+    text-align:center;
+    padding:50px 0 20px;
+    font-size:38px;
+    color:#D4AF37; /* Gold */
+    font-weight:700;
+}
+
+/* Section Styling */
+.section{
+    padding:60px 8%;
+}
+
+.section-title{
+    text-align:center;
+    font-size:26px;
+    margin-bottom:40px;
+    position:relative;
+}
+
+.section-title::after{
+    content:'';
+    width:60px;
+    height:4px;
+    background:#D4AF37;
+    display:block;
+    margin:10px auto 0;
+    border-radius:5px;
+}
+
+/* FLEXBOX CONTAINER */
+.card-container{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:30px;
+}
+
+/* Card Design */
+.card{
+    background:white;
+    color:#0B1C2D;
+    width:260px;
+    padding:30px 20px;
+    border-radius:18px;
+    text-align:center;
+    transition:0.4s ease;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+.card:hover{
+    transform:translateY(-12px);
+    box-shadow:0 15px 35px rgba(212,175,55,0.4);
+}
+
+.card img{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    object-fit:cover;
+    margin-bottom:18px;
+    border:4px solid #D4AF37;
+}
+
+.card h3{
+    font-size:18px;
+    margin-bottom:6px;
+}
+
+.card p{
+    font-size:14px;
+    color:#555;
+}
+
+/* Footer */
+footer{
+    background:#08131f;
+    text-align:center;
+    padding:25px;
+    margin-top:50px;
+    color:#D4AF37;
+    font-size:14px;
+}
+
+/* Responsive */
+@media(max-width:600px){
+    h1{
+        font-size:28px;
+    }
+    .section{
+        padding:40px 5%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<h1>Organizing Committee</h1>
+
+<!-- Leadership -->
+<section class="section">
+    <div class="section-title">Leadership</div>
+    <div class="card-container">
+        <div class="card">
+            <img src="committee/vijay bhaskar choudary.jpg" alt="Leader">
+            <h3>Dr. N. Vijaya Bhaskar Choudary</h3>
+            <p>Chief Patron</p>
+        </div>
+        <div class="card">
+            <img src="committee/keerthi nadella.jpg" alt="Leader">
+            <h3>Mrs. Keerthi Nadella</h3>
+            <p>Patron & Executive Director</p>
+        </div>
+        <div class="card">
+            <img src="committee/Yuvaraj sir.jpeg" alt="Leader">
+            <h3>Dr. C. Yuvaraj</h3>
+            <p>Vice Chancellor</p>
+        </div>
+        <div class="card">
+            <img src="committee/hod sir.jpg" alt="Leader">
+            <h3>Dr. S. Rajasekaran</h3>
+            <p>Head of Department-ECE</p>
+        </div>
+    </div>
+</section>
+
+<!-- Faculty Coordinators -->
+<section class="section">
+    <div class="section-title">Faculty Coordinators</div>
+    <div class="card-container">
+        <div class="card">
+            <img src="faculty1.jpg" alt="Faculty">
+            <h3>Prof. Name</h3>
+            <p>Faculty Coordinator</p>
+        </div>
+        <div class="card">
+            <img src="faculty2.jpg" alt="Faculty">
+            <h3>Prof. Name</h3>
+            <p>Technical Incharge</p>
+        </div>
+    </div>
+</section>
+
+<!-- Student Coordinators -->
+<section class="section">
+    <div class="section-title">Student Coordinators</div>
+    <div class="card-container">
+        <div class="card">
+            <img src="student1.jpg" alt="Student">
+            <h3>Bhavani Prakash</h3>
+            <p>Fest Organizer</p>
+        </div>
+        <div class="card">
+            <img src="student2.jpg" alt="Student">
+            <h3>Student Name</h3>
+            <p>Technical Lead</p>
+        </div>
+    </div>
+</section>
+
+<!-- Promotions Team -->
+<section class="section">
+    <div class="section-title">Promotions Team</div>
+    <div class="card-container">
+        <div class="card">
+            <img src="promo1.jpg" alt="Member">
+            <h3>Member Name</h3>
+            <p>Social Media Lead</p>
+        </div>
+        <div class="card">
+            <img src="promo2.jpg" alt="Member">
+            <h3>Member Name</h3>
+            <p>Marketing Team</p>
+        </div>
+    </div>
+</section>
+
+<!-- Event Coordinators -->
+<section class="section">
+    <div class="section-title">Event Co-ordinators</div>
+    <div class="card-container">
+        <div class="card">
+            <img src="event1.jpg" alt="Coordinator">
+            <h3>Member Name</h3>
+            <p>Technical Events</p>
+        </div>
+        <div class="card">
+            <img src="event2.jpg" alt="Coordinator">
+            <h3>Member Name</h3>
+            <p>Non-Technical Events</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    © 2026 ECE Department Fest | Made with ❤️ by Bhavani Prakash
+</footer>
+
+</body>
+</html>
