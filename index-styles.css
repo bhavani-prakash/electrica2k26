@@ -702,6 +702,10 @@
             font-size: 15px;
         }
 
+        .organised-by{
+            display: none;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .footer-container {
@@ -943,6 +947,12 @@
 
             .eagle-container {
                 animation: eagleSwoopDownMobile 3.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            }
+
+            .organised-by{
+                display: block;
+                margin-top: 10px;
+
             }
 
             @keyframes eagleSwoopDownMobile {
