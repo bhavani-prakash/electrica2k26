@@ -703,6 +703,40 @@
             font-size: 15px;
         }
 
+        /* Policy Links */
+        .footer-policies {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .footer-policies a {
+            color: #38bdf8;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s ease;
+        }
+
+        .footer-policies a:hover {
+            color: #d5f838;
+            text-decoration: underline;
+        }
+
+        /* Disclaimer */
+        .footer-disclaimer {
+            margin: 20px 0;
+            max-width: 800px;
+            padding: 15px;
+            background: rgba(51, 65, 85, 0.3);
+            border-left: 3px solid #38bdf8;
+            border-radius: 5px;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #ddd;
+        }
+
         .organised-by{
             display: none;
         }
